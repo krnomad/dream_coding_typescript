@@ -1,32 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
-
-  let post = '강남 고기 맛집';
-  // useState로 설정된 변수는 재렌더링을 한다. 
+  let post = "강남 고기 맛집";
+  // useState로 설정된 변수는 재렌더링을 한다.
   // 자주 바뀌는 데이터는 useState로 설정한다.
-  let [글제목, b] = useState(['남자 코트 추천', '여자 코트 추천', '제주 맛집 추천']);  
+  let [글제목, 글제목변경] = useState([
+    "남자 코트 추천",
+    "여자 코트 추천",
+    "제주 맛집 추천",
+  ]);
+  let [따봉, 따봉변경] = useState(0); // 따봉변경은 state 변경 함수 이다.
+
+  // function 함수(){
+  //   console.log(1);
+  //   따봉++;
+  // }
 
   return (
-    
-    <div className="App"> 
+    <div className="App">
       <div className="black-nav">
-        <h4 style={{color : 'red', fontSize: '16px'}}>React 공부하기</h4>
+        <h4 style={{ color: "red", fontSize: "16px" }}>React 공부하기</h4>
       </div>
       <div className="list">
-        <h3>{글제목[0]}</h3>
+        {/* onCLick event handler남 인자로 함수만 받는다 */}
+        {/* state 변경 함수는 변경할 값을 널는다 */}
+        <h3>
+          {글제목[0]}{" "}
+          <span
+            onClick={() => {
+              따봉변경(따봉 + 1);
+            }}
+          >
+            👍
+          </span>{" "}
+          {따봉}{" "}
+        </h3>
         <p>2월 17일 발행</p>
-        <hr/>
+        <hr />
         <h3>{글제목[1]}</h3>
         <p>2월 17일 발행</p>
-        <hr/>
+        <hr />
         <h3>{글제목[2]}</h3>
         <p>2월 17일 발행</p>
-        <hr/>
+        <hr />
       </div>
-      
+      <div>
+        <button onClick={()=>{글제목변경(["여자 코드 추천", 글제목[1], 글제목[2]])}}>버튼</button>
+      </div>
+
       <h4 id>{post}</h4>
     </div>
   );
