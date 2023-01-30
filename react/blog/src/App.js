@@ -5,17 +5,24 @@ import { useState } from 'react';
 function App() {
 
   let post = '강남 고기 맛집';
-  let [글제목, b] = useState('남자 코트 추천');
-  
+  // useState로 설정된 변수는 재렌더링을 한다. 
+  // 자주 바뀌는 데이터는 useState로 설정한다.
+  let [글제목, b] = useState(['남자 코트 추천', '여자 코트 추천', '제주 맛집 추천']);  
 
   return (
     
     <div className="App"> 
       <div className="black-nav">
-        <h4 style={{color : 'red', fontSize: '16px'}}>블로그임</h4>
+        <h4 style={{color : 'red', fontSize: '16px'}}>React 공부하기</h4>
       </div>
       <div className="list">
-        <h3>{글제목}</h3>
+        <h3>{글제목[0]}</h3>
+        <p>2월 17일 발행</p>
+        <hr/>
+        <h3>{글제목[1]}</h3>
+        <p>2월 17일 발행</p>
+        <hr/>
+        <h3>{글제목[2]}</h3>
         <p>2월 17일 발행</p>
         <hr/>
       </div>
